@@ -48,8 +48,6 @@ define Package/dnscrypt-proxy2/install
 	$(INSTALL_CONF) $(PKG_BUILD_DIR)/dnscrypt-proxy/example-dnscrypt-proxy.toml $(1)/etc/dnscrypt-proxy2/dnscrypt-proxy.toml
 	$(INSTALL_CONF) ./files/blacklist.txt $(1)/etc/dnscrypt-proxy2/blacklist.txt
 
-	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/dnscrypt-proxy.init $(1)/etc/init.d/dnscrypt-proxy
 
 	sed -i "s/^listen_addresses = .*/listen_addresses = ['127.0.0.53:53']/" $(1)/etc/dnscrypt-proxy2/dnscrypt-proxy.toml
 	sed -i "s/^  # blacklist_file = 'blacklist.txt'/blacklist_file = 'blacklist.txt'/" $(1)/etc/dnscrypt-proxy2/dnscrypt-proxy.toml
