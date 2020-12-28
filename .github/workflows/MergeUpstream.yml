@@ -10,7 +10,7 @@ name: MergeMasterToMaster
 
 on:
   schedule:
-    - cron: 00 */1 * * *
+    - cron: 00 */24 * * *
   # push:
      # branches: 
        # - master
