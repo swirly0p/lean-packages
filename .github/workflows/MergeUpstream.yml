@@ -9,6 +9,7 @@
 name: MergeMasterToMaster
 
 on:
+  workflow_dispatch: # 手动触发
   schedule:
     - cron: 00 */24 * * *
   # push:
