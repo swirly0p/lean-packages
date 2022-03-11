@@ -17,8 +17,9 @@ PKG_LICENSE_FILES:=COPYING
 PKG_CPE_ID:=cpe:/a:my-netdata:netdata
 
 PKG_SOURCE:=$(PKG_NAME)-v$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/netdata/netdata/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=fae8ba3d88c555fd7fb3ddf91c34e827163823f269d8469e02627df50f4ba76d
+PKG_SOURCE_URL:=https://github.com/netdata/netdata/releases/download/v$(PKG_VERSION)
+PKG_HASH:=20ba8695d87187787b27128ac3aab9b09aa29ca6b508c48542e0f7d50ec9322b
+PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-v$(PKG_VERSION)
 
 PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
@@ -30,7 +31,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/netdata
   SECTION:=admin
   CATEGORY:=Administration
-  DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c +liblz4
+  DEPENDS:=+zlib +libuuid +libuv +libmnl +libjson-c
   TITLE:=Real-time performance monitoring tool
   URL:=https://www.netdata.cloud/
 endef
@@ -62,6 +63,7 @@ CONFIGURE_ARGS += \
 	--disable-plugin-xenstat \
 	--disable-backend-prometheus-remote-write \
 	--disable-unit-tests \
+	--disable-ml \
 	--disable-cloud
 
 define Build/Configure
