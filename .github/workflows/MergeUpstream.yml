@@ -58,7 +58,7 @@ jobs:
 
   Cleanup-Old-Artifacts:
     #needs: [merge]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - name: Cleanup Old Action Artifacts
       uses: kolpav/purge-artifacts-action@v1
@@ -67,7 +67,7 @@ jobs:
         expire-in: 1d
   Cleanup-Workflow-Runs:
     needs: Cleanup-Old-Artifacts
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Cleanup Workflow Runs
         uses: GitRML/delete-workflow-runs@v1.2.1
